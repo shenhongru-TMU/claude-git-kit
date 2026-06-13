@@ -1,48 +1,51 @@
 ---
 name: wrap-up
-description: 每日收工：选择性提交 + 生成 commit message + 推送到 GitHub
+description: Daily wrap-up — selective commit + auto commit message + push to GitHub
 user-invocable: true
 allowed-tools: Bash(git *), Read
 ---
 
-# 每日收工
+# Daily Wrap-up
 
-请逐步完成以下收工流程：
+Follow these steps one by one:
 
-## 第一步：拉取远程最新
-先执行 `git pull --rebase`，确保本地不会覆盖远端改动。
-如果出现冲突，停止流程，列出冲突文件，让我手动处理。
+## Step 1: Pull latest changes
+Run `git pull --rebase` first, to avoid overwriting remote changes.
+If a conflict occurs, stop and list the conflicting files for manual resolution.
 
-## 第二步：列出所有改动
-执行 `git status`，把所有改动的文件按重要性分成三类展示：
+## Step 2: List all changes
+Run `git status`, then categorize every changed file into three groups:
 
-| 分类 | 说明 |
+| Group | What |
 |------|------|
-| 📌 核心改动 | 代码、脚本、最终结果图 |
-| 📎 次要改动 | 文档、配置 |
-| 🗑️ 临时/草稿 | 临时日志、中间结果、实验草稿 |
+| 📌 Core | Code, scripts, final result figures |
+| 📎 Minor | Docs, config files |
+| 🗑️ Temp/Draft | Temp logs, intermediate results, experiment drafts |
 
-## 第三步：看 diff 总结
-执行 `git diff --stat`，用一句话概括每类改动的核心内容。
+## Step 3: Summarize the diff
+Run `git diff --stat`, then write a one-line summary of what each group changed.
 
-## 第四步：让我选择
-问我：「**哪些要加入这次提交？**」等我的答案。只 add 我选中的文件。
+## Step 4: Let me choose
+Ask me: **"Which files should go into this commit?"**
 
-## 第五步：生成 commit message
-根据我选中的文件改动内容，生成符合 Conventional Commits 规范的提交信息：
+Wait for my answer. Only `git add` the files I select.
+
+## Step 5: Generate commit message
+Based on the selected changes, generate a Conventional Commits message:
 ```
-<type>(<scope>): <简短描述>
-- 具体改动 1
-- 具体改动 2
+<type>(<scope>): <short summary>
+- Change 1
+- Change 2
 ```
-type 从以下选：feat / fix / docs / refactor / results / chore
-把 commit message 展示给我确认。
+type must be one of: feat / fix / docs / refactor / results / chore
 
-## 第六步：提交并推送
-确认后执行：
+Show the message for my confirmation.
+
+## Step 6: Commit and push
+After I confirm:
 ```bash
-git add <我选中的文件>
-git commit -m "<确认的message>"
+git add <selected files>
+git commit -m "<confirmed message>"
 git push
 ```
-完成后展示本次提交的 `git log --oneline -1`。
+Finish by showing `git log --oneline -1`.

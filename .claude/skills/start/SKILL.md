@@ -1,18 +1,18 @@
 ---
 name: start
-description: 每日开工：拉取最新代码，回顾上次收工状态
+description: Daily start — pull latest code and review last session's status
 user-invocable: true
 allowed-tools: Bash(git *), Read
 ---
 
-# 每日开工
+# Daily Start
 
-## 第一步：拉取远程最新
-执行 `git pull --rebase`，获取服务器或本地推上来的最新改动。
-展示拉下来了哪些新 commit。
+## Step 1: Pull latest changes
+Run `git pull --rebase` to fetch the latest commits from remote.
+Show what was pulled down.
 
-## 第二步：回顾上次收工
-执行 `git log --oneline -5`，展示最近 5 条 commit，帮我回忆起上次干到哪了。
+## Step 2: Review last session
+Run `git log --oneline -5` to show the last 5 commits, so I can recall where I left off.
 
-## 第三步：当前状态
-执行 `git status --short`，展示当前工作区状态。
+## Step 3: Current status
+Run `git status --short` to show the current working tree state.
